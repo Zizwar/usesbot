@@ -43,8 +43,8 @@ const data = {
     console.log("start", { token, UUID, dataSubmit });
 
     const urlFetch = UUID
-      ? `https://mojoland.deno.dev/api/mojo-update?token=${token}&uuid=${UUID}`
-      : `https://mojoland.deno.dev/api/abrakadabra?token=${token}`;
+      ? `/api/mojo-update?token=${token}&uuid=${UUID}`
+      : `/api/abrakadabra?token=${token}`;
 
     try {
       const response = await fetch(urlFetch, {
@@ -72,7 +72,7 @@ const data = {
     const composite = new Composite({ top: 'prev() 16', left: 16, right: 16 });
 
     new TextView({
-      text: `${icon} ${name}`,
+      text: `${icon ? `🔑 ${icon} ` : ''}${label}`,
       font: 'bold 14px',
       left: 0, top: 0
     }).appendTo(composite);
@@ -106,25 +106,25 @@ const data = {
     return composite;
   };
 
-  const fields = [
-    { name: "token", label: "توكن", type: "text", icon: "🔑" },
-    { name: "status", label: "الحالة", type: "text", icon: "🚩" },
-    { name: "title_ar", label: "العنوان (عربي)", type: "text", icon: "📝" },
-    { name: "title_en", label: "العنوان (إنجليزي)", type: "text", icon: "📝" },
-    { name: "comment", label: "التعليق", type: "textarea", icon: "💬" },
-    { name: "method", label: "الطريقة", type: "text", icon: "⚙️" },
-    { name: "endpoint", label: "النقطة النهائية", type: "text", icon: "🔗" },
-    { name: "table", label: "الجدول", type: "text", icon: "📊" },
-    { name: "columns", label: "الأعمدة", type: "text", icon: "📋" },
-    { name: "prefix", label: "البادئة", type: "text", icon: "🔤" },
-    { name: "single", label: "واحد فقط", type: "select", icon: "1️⃣" },
-    { name: "role", label: "الدور", type: "text", icon: "👤" },
-    { name: "filters", label: "الفلاتر", type: "textarea", icon: "⚗️" },
-    { name: "select", label: "الاختيار", type: "text", icon: "✅" },
-    { name: "permissions", label: "الصلاحيات", type: "textarea", icon: "🔒" },
-    { name: "uuid", label: "معرّف UUID", type: "text", icon: "🆔" },
-    { name: "clone", label: "استنساخ", type: "select", icon: "📄" }
-  ];
+const fields = [
+  { name: "token", label: "توكن", type: "text", icon: "fa-key" },
+  { name: "status", label: "الحالة", type: "text", icon: "fa-flag" },
+  { name: "title_ar", label: "العنوان (عربي)", type: "text", icon: "fa-heading" },
+  { name: "title_en", label: "العنوان (إنجليزي)", type: "text", icon: "fa-heading" },
+  { name: "comment", label: "التعليق", type: "textarea", icon: "fa-comment" },
+  { name: "method", label: "الطريقة", type: "text", icon: "fa-code" },
+  { name: "endpoint", label: "النقطة النهائية", type: "text", icon: "fa-link" },
+  { name: "table", label: "الجدول", type: "text", icon: "fa-table" },
+  { name: "columns", label: "الأعمدة", type: "text", icon: "fa-columns" },
+  { name: "prefix", label: "البادئة", type: "text", icon: "fa-code-branch" },
+  { name: "single", label: "واحد فقط", type: "select", icon: "fa-circle-o-notch" },
+  { name: "role", label: "الدور", type: "text", icon: "fa-user" },
+  { name: "filters", label: "الفلاتر", type: "textarea", icon: "fa-filter" },
+  { name: "select", label: "الاختيار", type: "text", icon: "fa-check" },
+  { name: "permissions", label: "الصلاحيات", type: "textarea", icon: "fa-lock" },
+  { name: "uuid", label: "معرّف UUID", type: "text", icon: "fa-id-badge" },
+  { name: "clone", label: "استنساخ", type: "select", icon: "fa-clone" }
+];
 
 contentView.append(
   <ScrollView stretch>
